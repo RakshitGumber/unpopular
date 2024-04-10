@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+  font-family: "FFFTusj";
+  src: url("../../public/fonts/FFFTusj.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #16161d;
+  --secondary-background: rgba(53, 53, 69, 0.15);
+  --primary: #7b00ff;
+  --border: #2d2d2d;
+  --border2: #3d3d3d;
+}
+
+body {
+  background-color: var(--background);
+  color: white;
+  font-family: "Cabin";
+}
+
+.title {
+  font-family: "FFFTusj";
+  font-size: 3rem;
+  color: white;
+  letter-spacing: 0.6rem;
+  text-transform: Uppercase;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-family: "Montserrat";
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: "Cabin";
+  letter-spacing: 0.2rem;
+  text-transform: capitalize;
+}
+
+span,
+p {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+}
+
+a {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  color: currentColor;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
+ul {
+  display: inline;
+}
+
+li {
+  list-style: none;
+}
