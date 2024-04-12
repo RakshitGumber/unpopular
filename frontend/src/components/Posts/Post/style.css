@@ -1,0 +1,61 @@
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-header h1 {
+  width: 70%;
+}
+
+.stamp {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-block {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.post-actions button {
+  display: flex;
+  font-size: 1.4rem;
+  color: white;
+  background: none;
+  border: none;
+}
+
+.action {
+  color: white;
+  font-size: 1.6rem;
+  display: flex;
+  background: none;
+  border: none;
+}
+
+.action:active {
+  color: red;
+}
+
+.like-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-content {
+  width: 85%;
+}
+
+.post-content img {
+  width: 80%;
+  margin: auto;
+  object-fit: cover;
+}

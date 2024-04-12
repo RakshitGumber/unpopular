@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, signup } from "../../actions/user";
+import Firework from "../Animations/Firework";
+import "./style.css";
 
 const initialState = {
   firstName: "",
@@ -10,7 +12,7 @@ const initialState = {
   password: "",
 };
 
-export default function Auth() {
+export default function Signup() {
   const [isSignup, setIsSignup] = useState(true);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
@@ -36,50 +38,69 @@ export default function Auth() {
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
   return (
-    <div className="container">
-      <h1>{isSignup ? "Sign up" : "Log in"}</h1>
-      <form onSubmit={handleSubmit}>
-        {isSignup && (
-          <>
+    <>
+      <div className="form-container">
+        <h1 className="form-header">{isSignup ? "Sign up" : "Log in"}</h1>
+        <form onSubmit={handleSubmit}>
+          {isSignup && (
+            <>
+              <div>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  name="firstName"
+                  type="text"
+                  onChange={handleChange}
+                  placeholder="Enter First Name"
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Enter Last Name"
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
+
+          <div>
+            <label htmlFor="email">Email</label>
             <input
-              name="firstName"
-              type="text"
-              placeholder="Enter your Beatiful Name"
+              name="email"
+              type="email"
+              placeholder="Enter Email"
               onChange={handleChange}
             />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
             <input
-              name="lastName"
-              type="text"
-              placeholder="Enter your Last Name"
+              name="password"
+              type="password"
+              placeholder="Enter Password"
               onChange={handleChange}
             />
-          </>
+          </div>
+
+          <button className="signupButton" type="submit">
+            {isSignup ? "Sign up" : "Log in"}
+          </button>
+        </form>
+        {isSignup ? (
+          <div>
+            <span>Already a user?</span>
+            <button onClick={switchForm}>Log in</button>
+          </div>
+        ) : (
+          <div>
+            <span>New here?</span>
+            <button onClick={switchForm}>Sign Up</button>
+          </div>
         )}
-        <input
-          name="email"
-          type="email"
-          placeholder="Enter your Supa Fancy Email"
-          onChange={handleChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Enter the most secret password ever"
-          onChange={handleChange}
-        />
-        <button type="submit">{isSignup ? "Sign up" : "Log in"}</button>
-      </form>
-      {isSignup ? (
-        <>
-          <span>Already a user?</span>
-          <button onClick={switchForm}>Log in</button>
-        </>
-      ) : (
-        <>
-          <span>New here?</span>
-          <button onClick={switchForm}>Click</button>
-        </>
-      )}
-    </div>
+      </div>
+      <Firework />
+    </>
   );
 }

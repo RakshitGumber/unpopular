@@ -1,0 +1,68 @@
+button.login-btn {
+  color: white;
+  background-color: var(--primary);
+  border: none;
+  padding: 0.6rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px black;
+  position: relative;
+  width: 120px;
+  transition: padding 0.4s ease;
+  cursor: pointer;
+}
+
+button.login-btn::after {
+  content: ">";
+  position: absolute;
+  right: -10px;
+  opacity: 0;
+  transition: right 0.4s ease, -webkit-opacity 0.4s ease;
+}
+
+button.login-btn:hover {
+  padding-left: 1.5rem;
+}
+
+button.login-btn:hover:after {
+  right: 10px;
+  opacity: 1;
+}
+
+button.login-btn:active {
+  filter: brightness(1.2);
+}
+
+/* CSS rules for mobile devices */
+@media only screen and (max-width: 768px) {
+  button.login-btn {
+    font-size: 1rem;
+    width: 80px;
+    padding: 0.6rem 1rem;
+  }
+
+  button.login-btn:hover {
+    padding-left: 0.3rem;
+  }
+
+  button.login-btn:hover:after {
+    right: 5px;
+  }
+}
+
+/* iPads, Tablets (481px - 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  button.login-btn {
+    font-size: 1rem;
+    width: 80px;
+    padding: 0.6rem 1rem;
+  }
+
+  button.login-btn:hover {
+    padding-left: 0.3rem;
+  }
+
+  button.login-btn:hover:after {
+    right: 5px;
+  }
+}

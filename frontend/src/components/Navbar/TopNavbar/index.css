@@ -1,0 +1,75 @@
+.top-navbar {
+  width: 100%;
+  position: fixed;
+  top: -100px;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-background);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  z-index: 30;
+}
+
+h1.title {
+  text-shadow: 0px 2px 3px black;
+}
+
+h1.title::first-letter {
+  color: var(--primary);
+  font-size: 1.2em;
+}
+
+.user-options {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hamburger,
+.user-options button {
+  margin-left: 30px;
+  display: flex;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: white;
+  transition: -webkit-filter 0.2s ease;
+}
+
+.hamburger,
+.user-options > *:active {
+  filter: drop-shadow(0px 2px 1px black);
+}
+
+/* CSS rules for mobile devices */
+@media only screen and (max-width: 480px) {
+  .top-navbar {
+    padding: 10px;
+    height: 60px;
+  }
+  h1.title {
+    font-size: 1.2rem;
+  }
+  .user-options > button {
+    margin-left: 16px;
+    font-size: 1.2rem;
+  }
+  .hamburger {
+    margin-left: 0;
+    font-size: 1.3rem;
+  }
+}
+
+/* iPads, Tablets (481px - 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .hamburger {
+    margin-left: 0;
+  }
+}

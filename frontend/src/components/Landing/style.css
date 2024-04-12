@@ -1,0 +1,168 @@
+:root {
+  --secondary-bg-color: #1f1f29;
+  --secondary-fg-color: #9696bf;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 65px;
+  flex-flow: column nowrap;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+.hero-head-text {
+  font-size: 60px;
+}
+
+.hero {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.what-is-sec {
+  display: flex;
+  width: 100vw;
+  padding: 30px;
+  gap: 25px;
+  align-items: center;
+}
+
+.what-is-right {
+  width: 60vw;
+}
+
+.what-is-left {
+  width: 40vw;
+}
+
+.heading-text {
+  font-size: 40px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+}
+
+.heading-text:after {
+  content: "";
+  float: left;
+  background: var(--primary);
+  width: 100%;
+  height: 7px;
+  border-radius: 3px;
+  margin: 7px;
+}
+
+.desc-text {
+  text-align: justify;
+  margin: 10px;
+  line-height: 1.4rem;
+  color: var(--secondary-fg-color);
+}
+
+.box {
+  background-color: var(--secondary-bg-color);
+  width: 100%;
+  height: 450px;
+  border-radius: 150px 10px 10px 10px;
+}
+
+.divider {
+  width: 100vw;
+  height: 2px;
+  background: var(--secondary-bg-color);
+}
+
+.features-sec {
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  flex-flow: column nowrap;
+  padding: 50px;
+}
+
+.features-grid {
+  display: flex;
+  padding: 30px;
+  width: 75vw;
+  justify-content: space-around;
+  gap: 30px;
+  align-self: center;
+}
+
+.card {
+  width: 30%;
+  height: 22vw;
+  background-color: var(--secondary-bg-color);
+  border-radius: 20px;
+}
+
+.about-sec {
+  width: 100%;
+  display: flex;
+  padding: 50px 50px 50px 100px;
+  height: 500px;
+  justify-content: space-between;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-image {
+  width: 20vw;
+  height: 20vw;
+  background-color: var(--secondary-bg-color);
+  border-radius: 50%;
+}
+
+.strong-text {
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 45px;
+  margin-top: 15px;
+}
+
+.un-text {
+  color: var(--secondary-fg-color);
+}
+
+.content {
+  width: 60vw;
+  height: 500px;
+}
+
+.p-left-0 {
+  margin-left: 0px;
+}
+
+.footer {
+  width: 100vw;
+  height: 50px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  gap: 50px;
+  padding: 50px;
+}
+
+.contact-right {
+  width: 50vw;
+}
+
+.contact-left {
+  width: 50vw;
+}

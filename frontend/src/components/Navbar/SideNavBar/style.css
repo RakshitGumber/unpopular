@@ -1,0 +1,17 @@
+.side-nav {
+  position: fixed;
+  width: 300px;
+  top: 70px;
+  bottom: 0;
+  left: 0px;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px 50px;
+  flex-direction: column;
+  background-color: var(--secondary-background);
+  z-index: 100;
+  border-right: 1px solid var(--border);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

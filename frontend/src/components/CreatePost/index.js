@@ -3,8 +3,9 @@ import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 import { useSelector } from "react-redux";
+import "./style.css";
 
-export default function Form({ currentId, setCurrentId }) {
+export default function CreatePost({ currentId, setCurrentId }) {
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
@@ -51,9 +52,16 @@ export default function Form({ currentId, setCurrentId }) {
     });
   };
   return (
-    <div>
-      <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <h3>{currentId ? "Edit" : "Post an opinion"}</h3>
+    <>
+      <form
+        autoComplete="off"
+        noValidate
+        onSubmit={handleSubmit}
+        className="create-post"
+      >
+        <h3 className="create-post-header">
+          {currentId ? "Edit" : "What's in your mind..."}
+        </h3>
         <input
           name="title"
           placeholder="title"
@@ -61,6 +69,7 @@ export default function Form({ currentId, setCurrentId }) {
           onChange={(e) => {
             setPostData({ ...postData, title: e.target.value });
           }}
+          className="create-input"
         />
         <textarea
           name="message"
@@ -69,6 +78,7 @@ export default function Form({ currentId, setCurrentId }) {
           onChange={(e) => {
             setPostData({ ...postData, message: e.target.value });
           }}
+          className="create-input"
         />
         <input
           name="tags"
@@ -77,6 +87,7 @@ export default function Form({ currentId, setCurrentId }) {
           onChange={(e) => {
             setPostData({ ...postData, tags: e.target.value });
           }}
+          className="create-input"
         />
         <div>
           <FileBase
@@ -85,11 +96,14 @@ export default function Form({ currentId, setCurrentId }) {
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
+            className="create-input"
           />
         </div>
-        <button type="submit">Submit</button>
-        <button onClick={clear}>Clear</button>
+        <div className="actions">
+          <button type="submit">Submit</button>
+          <button onClick={clear}>Clear</button>
+        </div>
       </form>
-    </div>
+    </>
   );
 }
