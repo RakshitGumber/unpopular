@@ -4,6 +4,7 @@ import connectDB from "./db/index.js";
 import cors from "cors";
 import posts from "./routes/posts/index.js";
 import home from "./routes/home/index.js";
+import user from "./routes/user/index.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 // routes
 app.use("/", home);
 app.use("/posts", posts);
+app.use("/user", user);
 
 Promise.all([connectDB()]).then(() => {
   console.log("Connected to the Database");
