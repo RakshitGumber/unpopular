@@ -1,7 +1,3 @@
-:root {
-  --secondary-bg-color: #1f1f29;
-  --secondary-fg-color: #9696bf;
-}
 
 .body {
   display: flex;

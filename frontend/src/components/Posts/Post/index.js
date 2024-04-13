@@ -16,14 +16,25 @@ export default function Post({ post, setCurrentId }) {
     navigate(`/posts/${post._id}`);
   };
 
+  const openUser = () => {
+    navigate(`/user/${post.creator}`);
+  };
+
   return (
     <div className="post-block">
-      <div className="post-content" onClick={openPost}>
+      <div className="post-content">
         <div className="post-header">
-          <h1>{post.title}</h1>
-          <div className="stamp">
-            <span>{post.name} </span>
-            <span>{moment(post.createdAt).fromNow()}</span>
+          <div className="cred-block">
+            <div className="avatar">
+              {!post.image ? <div className="empty-avatar"></div> : <img />}
+            </div>
+            <span className="created-cred" onClick={openUser}>
+              {post.name}
+            </span>
+            <span className="created-cred">&#8226;</span>
+            <span className="created-cred">
+              {moment(post.createdAt).fromNow()}
+            </span>
           </div>
           <div className="post-actions">
             {user?.user?._id === post?.creator && (
@@ -42,30 +53,30 @@ export default function Post({ post, setCurrentId }) {
             )}
           </div>
         </div>
-        <p>{post.message}</p>
-        {post.selectedFile && (
-          <img
-            src={post.selectedFile}
-            alt="something was here"
-            className="Post Image"
-          />
-        )}
-        <div className="tags">
-          {post.tags.map((tag) => (
-            <span>{tag} </span>
-          ))}
+        <div className="post-body" onClick={openPost}>
+          <h2 className="post-title">{post.title}</h2>
+          <p className="post-para">{post.message}</p>
+          {post.selectedFile && (
+            <img
+              src={post.selectedFile}
+              alt="something was here"
+              className="post-image"
+            />
+          )}
         </div>
       </div>
-      <div className="like-section">
-        <button
-          onClick={() => {
-            dispatch(likePost(post._id));
-          }}
-          className="action"
-        >
-          <BiUpvote />
-        </button>
-        <span></span>
+      <div className="user-actions">
+        <div className="like-section">
+          <button
+            onClick={() => {
+              dispatch(likePost(post._id));
+            }}
+            className="action"
+          >
+            <BiUpvote />
+          </button>
+          <span>{post.likes.length}</span>
+        </div>
       </div>
     </div>
   );

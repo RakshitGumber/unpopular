@@ -26,10 +26,6 @@ export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
       setUser(null);
     };
 
-    window.addEventListener("resize", () => {
-      setScreenWidth(window.screen.width);
-    });
-
     const token = user?.token;
 
     if (token) {
@@ -40,6 +36,10 @@ export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
 
     setUser(JSON.parse(localStorage.getItem("user")));
   }, [dispatch, history, setUser, user?.token]);
+
+  window.addEventListener("resize", () => {
+    setScreenWidth(window.screen.width);
+  });
 
   return (
     <div className="top-navbar">
@@ -54,10 +54,8 @@ export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
         </Link>
       </div>
       <div className="user-options">
-        {render.map((prop) => (
-          <React.Fragment key={Math.floor(Math.random() * 10000)}>
-            {prop}
-          </React.Fragment>
+        {render.map((prop, index) => (
+          <React.Fragment key={index}>{prop}</React.Fragment>
         ))}
       </div>
     </div>

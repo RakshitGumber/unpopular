@@ -1,12 +1,13 @@
 import { Router } from "express";
 import getPosts from "./getPosts.js";
-import createPost from "./createPost.js";
 import {
   getPostsBySearch,
   updatePost,
   deletePost,
   likePost,
-  getPost,commentPost
+  getPost,
+  commentPost,
+  createPost,
 } from "../../controller/posts.js";
 import authenticate from "../../middleware/authenticate.js";
 

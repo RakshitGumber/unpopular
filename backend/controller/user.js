@@ -30,7 +30,7 @@ export const loginUser = async (req, res) => {
 };
 
 export const signupUser = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, username, password, firstName, lastName } = req.body;
   try {
     const user = await Users.findOne({ email });
 
@@ -42,7 +42,9 @@ export const signupUser = async (req, res) => {
     const result = await Users.create({
       email,
       password: hashedPassword,
-      name: `${firstName} ${lastName}`,
+      firstName,
+      lastName,
+      username,
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, "test", {
@@ -55,3 +57,5 @@ export const signupUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const updateUser = async (req, res) => {};

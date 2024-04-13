@@ -1,5 +1,29 @@
 import mongoose from "mongoose";
 import Posts from "../model/posts.js";
+import Users from "../model/user.js";
+
+export const createPost = async (req, res) => {
+  const post = req.body;
+  const user = await Users.findById(req.userId);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  const newPost = new Posts({
+    ...post,
+    creator: req.userId,
+    name: user.username,
+
+    createdAt: new Date().toISOString(),
+  });
+  try {
+    await newPost.save();
+    res.status(201).json({ message: "post created successfuly" });
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+};
 
 export const updatePost = async (req, res) => {
   const { id: _id } = req.params;
@@ -8,14 +32,13 @@ export const updatePost = async (req, res) => {
     return res.status(404).send("Post not found");
   }
 
-  const { title, message, creator, tags, selectedFile, likeCount, createdAt } =
+  const { title, message, creator, selectedFile, likeCount, createdAt } =
     req.body;
 
   try {
     const updatedFields = {};
     if (title) updatedFields.title = title;
     if (message) updatedFields.message = message;
-    if (tags) updatedFields.tags = tags;
     if (selectedFile) updatedFields.selectedFile = selectedFile;
     if (likeCount) updatedFields.likeCount = likeCount;
     if (createdAt) updatedFields.createdAt = createdAt;

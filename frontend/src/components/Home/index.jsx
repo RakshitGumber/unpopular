@@ -7,7 +7,7 @@ import "./style.css";
 import { useDispatch } from "react-redux";
 import { Search } from "../Search/index.jsx";
 
-export default function Home() {
+export default function Home({ setShowCreateTab, showCreate }) {
   const [currentId, setCurrentId] = useState(null);
   // const [search, setSearch] = useState("");
 
@@ -18,8 +18,14 @@ export default function Home() {
   }, [currentId, dispatch]);
   return (
     <>
+      {showCreate && (
+        <CreatePost
+          currentId={currentId}
+          setCurrentId={setCurrentId}
+          setShowCreateTab={setShowCreateTab}
+        />
+      )}
       <Posts setCurrentId={setCurrentId} />
-      <CreatePost currentId={currentId} setCurrentId={setCurrentId} />
     </>
   );
 }

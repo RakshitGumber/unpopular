@@ -8,6 +8,7 @@ import "./style.css";
 const initialState = {
   firstName: "",
   lastName: "",
+  username: "",
   email: "",
   password: "",
 };
@@ -57,6 +58,15 @@ export default function Signup() {
                 <label htmlFor="lastName">Last Name</label>
                 <input
                   name="lastName"
+                  type="text"
+                  placeholder="Enter Last Name"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="username">Last Name</label>
+                <input
+                  name="username"
                   type="text"
                   placeholder="Enter Last Name"
                   onChange={handleChange}

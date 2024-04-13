@@ -4,15 +4,19 @@ import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 import { useSelector } from "react-redux";
 import "./style.css";
+import { RxCross1 } from "react-icons/rx";
 
-export default function CreatePost({ currentId, setCurrentId }) {
+export default function CreatePost({
+  setShowCreateTab,
+  currentId,
+  setCurrentId,
+}) {
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
   const [postData, setPostData] = useState({
     title: "",
     message: "",
-    tags: "",
     selectedFile: "",
   });
   const dispatch = useDispatch();
@@ -22,8 +26,8 @@ export default function CreatePost({ currentId, setCurrentId }) {
     if (post) setPostData(post);
   }, [post]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     if (currentId) {
       dispatch(
@@ -42,14 +46,15 @@ export default function CreatePost({ currentId, setCurrentId }) {
     }
     clear();
   };
-  const clear = (e) => {
+
+  const clear = () => {
     setCurrentId(null);
     setPostData({
       title: "",
       message: "",
-      tags: "",
       selectedFile: "",
     });
+    setShowCreateTab(false);
   };
   return (
     <>
@@ -80,28 +85,23 @@ export default function CreatePost({ currentId, setCurrentId }) {
           }}
           className="create-input"
         />
-        <input
-          name="tags"
-          placeholder="tags"
-          value={postData.tags}
-          onChange={(e) => {
-            setPostData({ ...postData, tags: e.target.value });
-          }}
-          className="create-input"
-        />
-        <div>
+        <div className="image-input-container">
           <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
-            className="create-input"
+            className="image-input"
           />
         </div>
         <div className="actions">
-          <button type="submit">Submit</button>
-          <button onClick={clear}>Clear</button>
+          <button type="submit" disabled={postData.title === ""}>
+            Submit
+          </button>
+          <button onClick={clear} className="clearButton">
+            <RxCross1 />
+          </button>
         </div>
       </form>
     </>
