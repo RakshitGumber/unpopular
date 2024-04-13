@@ -42,7 +42,7 @@ export default function CreatePost({ currentId, setCurrentId }) {
     }
     clear();
   };
-  const clear = () => {
+  const clear = (e) => {
     setCurrentId(null);
     setPostData({
       title: "",

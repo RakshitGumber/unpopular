@@ -4,23 +4,35 @@ import {
   UPDATE,
   DELETE,
   LIKE,
+  FETCH,
 } from "../constants/actionTypes";
 
-export default (posts = [], action) => {
+export default (state = { post: null }, action) => {
   switch (action.type) {
+    case FETCH:
+      return { ...state, post: action.payload };
     case FETCH_ALL:
       return action.payload;
     case CREATE:
-      return [...posts, action.payload];
+      return [...state, action.payload]; // Changed from [...posts, action.payload] to [...state, action.payload]
     case UPDATE:
     case LIKE:
-      return posts.map((post) =>
+      return state.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
-
+    case "FETCH_BY_SEARCH":
+      return action.payload;
     case DELETE:
-      return posts.filter((post) => post._id !== action.payload);
+      return state.filter((post) => post._id !== action.payload);
+    case "COMMENT":
+      return {
+        ...state,
+        posts: {
+          ...state.post,
+          comments: [...state.post.comments, action.payload],
+        },
+      };
     default:
-      return posts;
+      return state;
   }
 };

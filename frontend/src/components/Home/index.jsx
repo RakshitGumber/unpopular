@@ -4,8 +4,8 @@ import Posts from "../Posts";
 import CreatePost from "../CreatePost";
 import { getPosts } from "../../actions/posts";
 import "./style.css";
-import SideNavBar from "../Navbar/SideNavBar/index";
 import { useDispatch } from "react-redux";
+import { Search } from "../Search/index.jsx";
 
 export default function Home() {
   const [currentId, setCurrentId] = useState(null);
@@ -18,9 +18,8 @@ export default function Home() {
   }, [currentId, dispatch]);
   return (
     <>
-      <SideNavBar />
-      <CreatePost currentId={currentId} setCurrentId={setCurrentId} />
       <Posts setCurrentId={setCurrentId} />
+      <CreatePost currentId={currentId} setCurrentId={setCurrentId} />
     </>
   );
 }

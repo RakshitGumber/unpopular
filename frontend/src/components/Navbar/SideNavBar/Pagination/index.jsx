@@ -7,7 +7,7 @@ const Pagination = ({ render }) => {
       {render.map((child, index) => {
         return (
           <li key={index}>
-            <Link to={`${child.href}`}>{child.component}</Link>
+            <Link to={child.href}>{child.component}</Link>
           </li>
         );
       })}

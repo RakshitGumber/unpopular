@@ -8,7 +8,7 @@ const SideNavBar = () => {
       <Pagination
         render={[
           { component: <span>Home</span>, href: "/" },
-          { component: <span>Explore</span>, href: "/explore" },
+          { component: <span>Explore</span>, href: "./search" },
         ]}
       />
     </nav>

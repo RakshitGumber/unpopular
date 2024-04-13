@@ -15,7 +15,6 @@ export const updatePost = async (req, res) => {
     const updatedFields = {};
     if (title) updatedFields.title = title;
     if (message) updatedFields.message = message;
-    if (creator) updatedFields.creator = creator;
     if (tags) updatedFields.tags = tags;
     if (selectedFile) updatedFields.selectedFile = selectedFile;
     if (likeCount) updatedFields.likeCount = likeCount;
@@ -78,5 +77,46 @@ export const likePost = async (req, res) => {
   }
 
   const updatedPost = await Posts.findByIdAndUpdate(id, post, { new: true });
+  res.json(updatedPost);
+};
+
+export const getPostsBySearch = async (req, res) => {
+  const { searchQuery } = req.query;
+  try {
+    const title = new RegExp(searchQuery, "i");
+
+    const posts = await Posts.find({
+      title,
+    });
+
+    res.status(200).json({ data: posts });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send("Error getting that post");
+  }
+};
+
+export const getPost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Posts.findById(id);
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json(post);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ message: error });
+  }
+};
+
+export const commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  const post = await Posts.findById(id);
+
+  post.comments.push(value);
+
+  const updatedPost = await Posts.findByIdAndUpdate(id, post, { new: true });
+
   res.json(updatedPost);
 };

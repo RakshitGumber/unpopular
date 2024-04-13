@@ -11,12 +11,12 @@ const postSchema = Schema({
   },
   name: String,
   creator: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "Users",
   },
   tags: [String],
   selectedFile: { type: String },
-
+  comments: { type: [String], default: [] },
   likes: { type: [String], default: [] },
   createdAt: {
     type: Date,

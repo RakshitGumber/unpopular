@@ -12,6 +12,9 @@ import { FaBell, FaGear } from "react-icons/fa6";
 import LoginButton from "./components/Button/LoginButton";
 import { Landing } from "./components/Landing/index.jsx";
 import { IoChatboxEllipses } from "react-icons/io5";
+import SideNavBar from "./components/Navbar/SideNavBar/index.jsx";
+import { Search } from "./components/Search/index.jsx";
+import { PostDetails } from "./components/PostDetails/index.jsx";
 
 export default function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -41,6 +44,7 @@ export default function App() {
         user={user}
         setUser={setUser}
       />
+      {user && <SideNavBar />}
       <Routes>
         <Route
           path="/"
@@ -50,7 +54,12 @@ export default function App() {
           path="/home"
           element={user ? <Home /> : <Navigate to="/user" />}
         />
-        <Route path="/user" element={<Signup />} />
+        <Route
+          path="/user"
+          element={!user ? <Signup /> : <Navigate to="home" />}
+        />
+        <Route path="/posts/:id" element={<PostDetails />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </Router>
   );

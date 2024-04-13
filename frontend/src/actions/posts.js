@@ -5,6 +5,7 @@ import {
   UPDATE,
   DELETE,
   LIKE,
+  FETCH,
 } from "../constants/actionTypes";
 
 export const getPosts = () => async (dispatch) => {
@@ -13,6 +14,16 @@ export const getPosts = () => async (dispatch) => {
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getPost = (id) => async (dispatch) => {
+  const { data } = await api.fetchPost(id);
+  try {
+    dispatch({ type: FETCH, payload: data });
+  } catch (error) {
+    console.log(data);
+    console.log("my error: " + error.message);
   }
 };
 
@@ -53,6 +64,31 @@ export const likePost = (id) => async (dispatch) => {
     const { data } = await api.likePost(id);
 
     dispatch({ type: LIKE, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    const {
+      data: { data },
+    } = await api.fetchPostsBySearch(searchQuery);
+
+    dispatch({ type: "FETCH_BY_SEARCH", payload: data });
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const commentPost = (value, id) => async (dispatch) => {
+  try {
+    const { data } = await api.comment(value, id);
+
+    dispatch({ type: "COMMENT", payload: data });
+
+    return data.comment;
   } catch (error) {
     console.log(error);
   }

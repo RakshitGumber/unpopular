@@ -4,14 +4,21 @@ import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/posts";
 import "./style.css";
 import { BiUpvote, BiPencil, BiTrash } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 // add icons - thumb, delete, more
 
 export default function Post({ post, setCurrentId }) {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  const openPost = () => {
+    navigate(`/posts/${post._id}`);
+  };
+
   return (
     <div className="post-block">
-      <div className="post-content">
+      <div className="post-content" onClick={openPost}>
         <div className="post-header">
           <h1>{post.title}</h1>
           <div className="stamp">
@@ -58,7 +65,7 @@ export default function Post({ post, setCurrentId }) {
         >
           <BiUpvote />
         </button>
-        <span>{post.likes.length}</span>
+        <span></span>
       </div>
     </div>
   );
