@@ -74,3 +74,10 @@ h1.title::first-letter {
     margin-left: 0;
   }
 }
+
+.branding {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}

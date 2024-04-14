@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import anime from "animejs/lib/anime.es.js";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import MenuButton from "../../Button/RoundButton";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
@@ -38,17 +39,19 @@ export const TopNavbar = ({ render, user, setUser }) => {
   }, [dispatch, history, setUser, user?.token]);
 
   return (
-    <div className="top-navbar">
-      <div className="branding">
-        <Link to="/">
-          <h1 className="title navbar-title">unpopular</h1>
-        </Link>
+    <>
+      <div className="top-navbar">
+        <div className="branding">
+          <Link to="/">
+            <h1 className="title navbar-title">unpopular</h1>
+          </Link>
+        </div>
+        <div className="user-options">
+          {render.map((prop, index) => (
+            <React.Fragment key={index}>{prop}</React.Fragment>
+          ))}
+        </div>
       </div>
-      <div className="user-options">
-        {render.map((prop, index) => (
-          <React.Fragment key={index}>{prop}</React.Fragment>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };

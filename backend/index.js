@@ -5,7 +5,6 @@ import cors from "cors";
 import posts from "./routes/posts/index.js";
 import home from "./routes/home/index.js";
 import user from "./routes/user/index.js";
-
 const app = express();
 
 // middleWares
@@ -20,14 +19,16 @@ app.use("/", home);
 app.use("/posts", posts);
 app.use("/user", user);
 
+const PORT = process.env.PORT || 8080;
+
 Promise.all([connectDB()]).then(() => {
   console.log("Connected to the Database");
-  app.listen(process.env.PORT, () => {
+  app.listen(PORT, () => {
     console.log(
       "\nServer Started at port: " +
-        process.env.PORT +
+        PORT +
         "\n\nTo connect to the server go to:\nhttp://localhost:" +
-        process.env.PORT
+        PORT
     );
   });
 });

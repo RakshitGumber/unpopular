@@ -22,6 +22,7 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
 
     if (isSignup) {
       dispatch(signup(formData, navigate));
@@ -32,7 +33,6 @@ export default function Signup() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
   };
 
   const switchForm = (e) => {

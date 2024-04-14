@@ -40,7 +40,7 @@ export const UserProfile = ({ userData }) => {
   const [theme, setTheme] = useState(lightTheme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
+  // const user = localStorage.getItem("user");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +53,7 @@ export const UserProfile = ({ userData }) => {
   };
 
   const handleSubmit = async () => {
-    await dispatch(updateUser(user.user._id, formData));
+    await dispatch(updateUser(userData._id, formData));
   };
 
   return (
@@ -83,16 +83,16 @@ export const UserProfile = ({ userData }) => {
         {!editProfile ? (
           <div className="editable-section">
             <div className="profilepic-container">
-              {user.user.profilepic ? (
-                <img src={user.user.profilepic} />
+              {userData ? (
+                <img src={userData.profilepic} alt="profile-pic" />
               ) : (
                 <div className="empty-image">add photo</div>
               )}
             </div>
 
             <div className="profile-content">
-              <h2>{user.user.username}</h2>
-              <span>{user.user.firstName + " " + user.user.lastName}</span>
+              <h2>{userData.username}</h2>
+              <span>{userData.firstName + " " + userData.lastName}</span>
             </div>
           </div>
         ) : (
@@ -101,26 +101,26 @@ export const UserProfile = ({ userData }) => {
               type="file"
               multiple={false}
               onDone={({ base64 }) =>
-                setFormData({ ...user, profilepic: base64 })
+                setFormData({ ...userData, profilepic: base64 })
               }
               className="image-input"
             />
             <input
               name="username"
               type="text"
-              placeholder={user.user.username}
+              placeholder={userData.username}
               onChange={handleChange}
             />
             <input
               name="firstName"
               type="text"
-              placeholder={user.user.firstName}
+              placeholder={userData.firstName}
               onChange={handleChange}
             />{" "}
             <input
               name="lastName"
               type="text"
-              placeholder={user.user.lastName}
+              placeholder={userData.lastName}
               onChange={handleChange}
             />
           </form>

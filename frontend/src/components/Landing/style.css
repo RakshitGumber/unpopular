@@ -1,4 +1,3 @@
-
 .body {
   display: flex;
   align-items: center;
@@ -9,8 +8,14 @@
   padding: 0px;
 }
 
-.hero-head-text {
+.hero-head-text,
+.hero-head-text span {
+  font-weight: 700;
   font-size: 60px;
+  text-transform: uppercase;
+}
+.colored {
+  color: var(--primary);
 }
 
 .hero {
@@ -19,6 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column nowrap;
 }
 .what-is-sec {
   display: flex;
@@ -57,20 +63,23 @@
   text-align: justify;
   margin: 10px;
   line-height: 1.4rem;
-  color: var(--secondary-fg-color);
+  color: var(--secondary-text);
 }
 
 .box {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--secondary-background);
   width: 100%;
   height: 450px;
   border-radius: 150px 10px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .divider {
   width: 100vw;
   height: 2px;
-  background: var(--secondary-bg-color);
+  background: var(--secondary-background);
 }
 
 .features-sec {
@@ -93,8 +102,27 @@
 .card {
   width: 30%;
   height: 22vw;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--secondary-background);
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 1rem;
+}
+
+.card > h3 {
+  font-size: 2rem;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+.card > p {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: var(--text);
+  text-align: center;
 }
 
 .about-sec {
@@ -103,6 +131,7 @@
   padding: 50px 50px 50px 100px;
   height: 500px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .avatar {
@@ -114,7 +143,7 @@
 .avatar-image {
   width: 20vw;
   height: 20vw;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--secondary-background);
   border-radius: 50%;
 }
 
@@ -126,12 +155,11 @@
 }
 
 .un-text {
-  color: var(--secondary-fg-color);
+  color: var(--secondary-text);
 }
 
 .content {
   width: 60vw;
-  height: 500px;
 }
 
 .p-left-0 {
@@ -146,19 +174,6 @@
   justify-content: center;
   align-items: center;
 }
-
-.contact {
-  display: flex;
-  width: 100vw;
-  justify-content: space-around;
-  gap: 50px;
-  padding: 50px;
-}
-
-.contact-right {
-  width: 50vw;
-}
-
-.contact-left {
-  width: 50vw;
+.footer p {
+  color: var(--text);
 }

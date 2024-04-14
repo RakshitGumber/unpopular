@@ -12,23 +12,23 @@ import LoginButton from "./components/Button/LoginButton";
 import { Landing } from "./components/Landing/index.jsx";
 import { IoAddSharp } from "react-icons/io5";
 import { PostDetails } from "./components/PostDetails/index.jsx";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./actions/user.js";
 import { UserProfile } from "./components/UserProfile/index.jsx";
 
 export default function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [showSideNav, setShowSideNav] = useState(false);
   const [profileSetting, setProfileSetting] = useState(false);
   const [showCreateTab, setShowCreateTab] = useState(false);
+
   const userData = useSelector((state) => state.userReducer.userData);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) dispatch(getUser(user.user._id));
-  }, [user?.user._id, dispatch]);
-
-  const toggleSideNavbar = () => setShowSideNav(!showSideNav);
+    // console.log(user.user);
+  });
 
   const toggleCreateTab = () => {
     setShowCreateTab(!showCreateTab);
@@ -47,21 +47,22 @@ export default function App() {
                 <button onClick={toggleCreateTab}>
                   <IoAddSharp />
                 </button>,
-                <div onClick={toggleProfileSetting}>
-                  <img
-                    src={
-                      userData &&
-                      (userData.profilepic ||
-                        `https://ui-avatars.com/api/?name=${userData.firstName}+${userData.lastName}`)
-                    }
-                    alt="profile"
-                    className="profile-view"
-                  />
-                </div>,
+                userData && (
+                  <div onClick={toggleProfileSetting}>
+                    <img
+                      src={
+                        userData &&
+                        (userData.profilepic ||
+                          `https://ui-avatars.com/api/?name=${userData.firstName}+${userData.lastName}`)
+                      }
+                      alt="profile"
+                      className="profile-view"
+                    />
+                  </div>
+                ),
               ]
             : [<LoginButton />]
         }
-        toggleSideNavbar={toggleSideNavbar}
         user={user}
         setUser={setUser}
       />
