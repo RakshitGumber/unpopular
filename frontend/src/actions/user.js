@@ -44,3 +44,12 @@ export const updateUser = (id, formData) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getRawUser = async (id) => {
+  try {
+    const { data } = await api.getUser(id);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

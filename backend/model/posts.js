@@ -7,7 +7,6 @@ const postSchema = Schema({
   },
   message: {
     type: String,
-    required: true,
   },
   name: String,
   creator: {

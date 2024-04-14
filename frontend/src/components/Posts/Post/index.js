@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import moment from "moment";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/posts";
-import { getUser } from "../../../actions/user";
+import { getRawUser } from "../../../actions/user";
 import {
   BiUpvote,
   BiPencil,
@@ -15,41 +15,37 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function Post({ post, setCurrentId }) {
-  const userData = useSelector((state) => state.userReducer.userData);
-  const user = localStorage.getItem("user");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const id = post.creator;
   const [extraOptions, setExtraOptions] = useState(false);
+  const [postUser, setPostUser] = useState({});
+  const getUser = async () => {
+    setPostUser(await getRawUser(id));
+    console.log(postUser);
+  };
 
   useEffect(() => {
-    dispatch(getUser(id));
+    getUser();
   }, []);
 
   const openPost = () => {
     navigate(`/posts/${post._id}`);
   };
-
-  const openUser = () => {
-    navigate(`/user/${post.creator}`);
-  };
-
   return (
     <>
       <div className="post-header">
         <div className="profile-pic">
           <img
             src={
-              userData &&
-              (userData.profilepic ??
-                `https://ui-avatars.com/api/?name=${userData.firstName}+${userData.lastName}`)
+              postUser.profilepic ??
+              `https://ui-avatars.com/api/?name=${postUser.firstName}+${postUser.lastName}`
             }
             alt="profile"
-            onMouseOver={() => {}}
           />
         </div>
-        <div className="profile" onClick={openUser}>
-          <h2>{userData && userData.username}</h2>
+        <div className="profile">
+          <h2>{post.name}</h2>
           <span>{moment(post.createdAt).fromNow()}</span>
         </div>
       </div>
@@ -74,7 +70,7 @@ export default function Post({ post, setCurrentId }) {
             <BiCommentDetail />
           </button>
         </div>
-        {userData && userData._id === post.creator && (
+        {postUser && postUser._id === post.creator && (
           <div className="more-actions">
             <button
               onClick={() => {

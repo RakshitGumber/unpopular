@@ -1,0 +1,21 @@
+.button-block {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--secondary-background);
+  border: none;
+  color: var(--secondary-text);
+}
+.button-block:hover {
+  background-color: var(--background);
+  color: var(--primary);
+  border: 2px solid var(--secondary-text);
+}
+
+.button-block:active {
+  filter: brightness(1.5);
+}
