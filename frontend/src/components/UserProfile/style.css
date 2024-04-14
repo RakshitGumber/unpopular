@@ -1,0 +1,111 @@
+.settings-panel {
+  width: 400px;
+  position: absolute;
+  z-index: 1000;
+  top: 70px;
+  right: 10px;
+  background-color: var(--secondary-background);
+  border: 1px solid var(--border);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.editable-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: space-evenly;
+  padding: 20px 10px 30px 20px;
+}
+
+hr {
+  width: 80%;
+  border: 1px solid slategray;
+}
+
+.editable-section img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+  margin-right: 20px;
+}
+
+.edit-button {
+  position: absolute;
+  display: flex;
+  top: 40px;
+  right: 20px;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text);
+  font-weight: 700;
+  background: none;
+}
+
+.extra-section {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.extra-section button {
+  margin: 5px;
+  padding: 10px 50px;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  background: var(--primary);
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.extra-section button.logout-btn {
+  background-color: #f20000;
+}
+
+.save-buttons {
+  position: absolute;
+  top: 240px;
+}
+
+.save-buttons button {
+  margin: 10px;
+  padding: 10px 30px;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  background: var(--primary);
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-form {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.profile-form input {
+  padding: 10px;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  margin: 5px;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  color: var(--text);
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,54 +8,34 @@ import {
 import Home from "./components/Home/index.jsx";
 import Signup from "./components/Signup/index.jsx";
 import { TopNavbar } from "./components/Navbar/TopNavbar/index.jsx";
-import { FaBell, FaGear } from "react-icons/fa6";
 import LoginButton from "./components/Button/LoginButton";
 import { Landing } from "./components/Landing/index.jsx";
-import { IoChatboxEllipses, IoAddSharp } from "react-icons/io5";
-import SideNavBar from "./components/Navbar/SideNavBar/index.jsx";
-import { Search } from "./components/Search/index.jsx";
+import { IoAddSharp } from "react-icons/io5";
 import { PostDetails } from "./components/PostDetails/index.jsx";
-import ChangeTheme from "./services/ChangeTheme.js";
-
-const darkTheme = {
-  "--background": "#16161d",
-  "--secondary-background": "#1f1f29",
-  "--secondary-text": "#9696bf",
-  "--text": "white",
-  "--primary": "#7b00ff",
-  "--border": "#2d2d2d",
-};
-
-const lightTheme = {
-  "--background": "rgb(238, 242, 247)",
-  "--secondary-background": "#ffffff",
-  "--secondary-text": "#28282d",
-  "--text": "black",
-  "--primary": "#7b00ff",
-  "--border": "#f6f6f6",
-};
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "./actions/user.js";
+import { UserProfile } from "./components/UserProfile/index.jsx";
 
 export default function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [showSideNav, setShowSideNav] = useState(false);
-  const [theme, setTheme] = useState(lightTheme);
-  const [screenWidth, setScreenWidth] = useState(window.screen.width);
+  const [profileSetting, setProfileSetting] = useState(false);
   const [showCreateTab, setShowCreateTab] = useState(false);
+  const userData = useSelector((state) => state.userReducer.userData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) dispatch(getUser(user.user._id));
+  }, [user?.user._id, dispatch]);
 
   const toggleSideNavbar = () => setShowSideNav(!showSideNav);
 
-  const switchTheme = () => {
-    if (theme === darkTheme) setTheme(lightTheme);
-    if (theme === lightTheme) setTheme(darkTheme);
-    ChangeTheme(theme);
-  };
-
-  window.addEventListener("resize", () => {
-    setScreenWidth(window.screen.width);
-  });
-
   const toggleCreateTab = () => {
     setShowCreateTab(!showCreateTab);
+  };
+
+  const toggleProfileSetting = () => {
+    setProfileSetting(!profileSetting);
   };
 
   return (
@@ -67,12 +47,17 @@ export default function App() {
                 <button onClick={toggleCreateTab}>
                   <IoAddSharp />
                 </button>,
-                <button>
-                  <IoChatboxEllipses />
-                </button>,
-                <button>
-                  <FaBell />
-                </button>,
+                <div onClick={toggleProfileSetting}>
+                  <img
+                    src={
+                      userData &&
+                      (userData.profilepic ||
+                        `https://ui-avatars.com/api/?name=${userData.firstName}+${userData.lastName}`)
+                    }
+                    alt="profile"
+                    className="profile-view"
+                  />
+                </div>,
               ]
             : [<LoginButton />]
         }
@@ -80,10 +65,7 @@ export default function App() {
         user={user}
         setUser={setUser}
       />
-      {/* <button onClick={switchTheme} className="themechangebutton">
-        SiwtchTheme
-      </button> */}
-      {user && (screenWidth > 767 || showSideNav) && <SideNavBar />}
+      {user && profileSetting && <UserProfile userData={userData} />}
       <Routes>
         <Route
           path="/"
@@ -105,7 +87,6 @@ export default function App() {
               }
             />
             <Route path="/posts/:id" element={<PostDetails />} />
-            <Route path="/search" element={<Search />} />
           </>
         )}
         <Route

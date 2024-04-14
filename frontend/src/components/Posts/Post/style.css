@@ -1,118 +1,190 @@
 .post-header {
+  width: 100%;
+  height: 60px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.post-header h1 {
-  width: 100%;
-}
-
-.stamp {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.post-actions {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.post-actions button {
-  display: flex;
-  font-size: 1.4rem;
-  color: white;
-  background: none;
-  border: none;
-}
-
-.action {
-  color: white;
-  font-size: 1.6rem;
-  display: flex;
-  background: none;
-  border: none;
-}
-
-.user-actions {
-  width: auto;
-  display: flex;
-}
-
-.action:active {
-  color: red;
-}
-
-.like-section {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  background-color: var(--background);
-  width: auto;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.post-content {
-  width: 100%;
-}
-
-.post-content img {
-  width: 100%;
-  margin: auto;
-  object-fit: cover;
-}
-
-.created-cred {
-  font-size: 1rem;
-  color: var(--secondary-text);
-}
-
-.created-cred:nth-child(2) {
-  color: var(--text);
+  align-content: space-between;
   cursor: pointer;
-  font-size: 1.2em;
+}
+.post-header::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: slategray;
 }
 
-.cred-block {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
+.profile-pic,
+.profile-pic img {
+  width: 40px;
+  height: 40px;
 }
 
-.empty-avatar {
-  width: 30px;
-  height: 30px;
+.profile-pic img {
   border-radius: 50%;
-  background-color: black;
+  border: 1px solid var(--border);
 }
 
-.post-image {
-  width: 800px;
-  /* height: 720px; */
-  object-fit: contain;
-  border-radius: 20px;
-  border: 1px solid var(--secondary-background);
+.profile {
+  width: 93%;
+  display: flex;
+  align-items: baseline;
+  justify-items: flex-start;
 }
 
-.post-title {
-  font-size: 1.8rem;
-}
-
-.post-para {
+.profile span {
   color: var(--secondary-text);
+}
+
+.profile span::before {
+  content: "\2022";
+  padding: 0px 10px;
+  color: var(--secondary-text);
+}
+
+.post-body {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0px;
+  cursor: default;
 }
 
 .post-body img {
-  padding: 10px 0;
+  padding-top: 20px;
+  width: 80%;
+  object-fit: cover;
+  align-self: center;
+}
+
+.actions-section {
+  display: flex;
+  width: 90%;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px 0px 10px;
+}
+
+.actions-section div {
+  background-color: var(--background);
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  border-radius: 20px;
+}
+
+.actions-section div button {
+  display: flex;
+  background: none;
+  color: var(--secondary-text);
+  border: none;
+  font-size: 1.4rem;
+}
+
+.actions-section div button:active {
+  color: red;
+}
+
+.red-button {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile {
+    width: 90%;
+  }
+  .post-header {
+    padding: 0px 0px;
+    height: 40px;
+  }
+  .profile h2 {
+    font-size: 1rem;
+  }
+  .profile-pic,
+  .profile-pic img {
+    width: 25px;
+    height: 25px;
+  }
+  .profile span {
+    font-size: 0.8rem;
+  }
+
+  .post-body {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    cursor: default;
+  }
+
+  .post-body h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .post-body p {
+    font-size: 0.8rem;
+  }
+
+  .post-body img {
+    padding-top: 20px;
+    width: 100%;
+    object-fit: cover;
+    align-self: center;
+  }
+}
+/* iPads, Tablets (481px - 768px) */
+@media only screen and (min-width: 600px) {
+  .profile {
+    width: 90%;
+  }
+  .post-header {
+    padding: 0px 15px;
+    height: 50px;
+  }
+  .profile h2 {
+    font-size: 1.3rem;
+  }
+  .profile-pic,
+  .profile-pic img {
+    width: 40px;
+    height: 40px;
+  }
+  .profile span {
+    font-size: 1rem;
+  }
+
+  .post-body {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    cursor: default;
+  }
+
+  .post-body h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .post-body p {
+    font-size: 1rem;
+  }
+
+  .post-body img {
+    padding-top: 20px;
+    width: 100%;
+    object-fit: cover;
+    align-self: center;
+  }
 }

@@ -32,11 +32,12 @@ export default function Signup() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
   };
 
   const switchForm = (e) => {
     e.preventDefault();
-    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setIsSignup(() => !isSignup);
   };
   return (
     <>
@@ -64,11 +65,11 @@ export default function Signup() {
                 />
               </div>
               <div>
-                <label htmlFor="username">Last Name</label>
+                <label htmlFor="username">User Name</label>
                 <input
                   name="username"
                   type="text"
-                  placeholder="Enter Last Name"
+                  placeholder="Enter User Name"
                   onChange={handleChange}
                 />
               </div>
@@ -101,12 +102,16 @@ export default function Signup() {
         {isSignup ? (
           <div>
             <span>Already a user?</span>
-            <button onClick={switchForm}>Log in</button>
+            <button onClick={switchForm} className="switch-btn">
+              Log in
+            </button>
           </div>
         ) : (
           <div>
             <span>New here?</span>
-            <button onClick={switchForm}>Sign Up</button>
+            <button onClick={switchForm} className="switch-btn">
+              Sign Up
+            </button>
           </div>
         )}
       </div>

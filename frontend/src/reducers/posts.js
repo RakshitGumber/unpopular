@@ -7,7 +7,7 @@ import {
   FETCH,
 } from "../constants/actionTypes";
 
-export default (state = { post: null }, action) => {
+const postReducer = (state = { post: null }, action) => {
   switch (action.type) {
     case FETCH:
       return { ...state, post: action.payload };
@@ -36,3 +36,5 @@ export default (state = { post: null }, action) => {
       return state;
   }
 };
+
+export default postReducer;

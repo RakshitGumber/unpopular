@@ -22,3 +22,25 @@ export const signup = (formData, navigate) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getUser = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.getUser(id);
+    dispatch({ type: "GET_USER", data });
+  } catch (error) {
+    console.log(error);
+    console.log("my error: " + error.message);
+  }
+};
+
+export const updateUser = (id, formData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateUser(id, formData);
+    if (!data) {
+      throw new Error("No data recieved");
+    }
+    dispatch({ type: "UPDATE_USER", data });
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -11,7 +11,7 @@ export default function Posts({ setCurrentId }) {
     <Loader />
   ) : (
     <div className="post-container">
-      {posts.reverse().map((post) => (
+      {posts.map((post) => (
         <div key={post._id} className="post-item">
           <Post post={post} setCurrentId={setCurrentId} />
         </div>

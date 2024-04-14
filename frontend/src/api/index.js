@@ -39,3 +39,8 @@ export const login = (formData) => API.post("/user/login", formData);
 
 export const comment = (value, id) =>
   API.post(`/posts/${id}/comment`, { value });
+
+export const getUser = (id) => API.get(`/user/${id}`);
+
+export const updateUser = (id, updatedUser) =>
+  API.patch(`/user/${id}`, updatedUser);

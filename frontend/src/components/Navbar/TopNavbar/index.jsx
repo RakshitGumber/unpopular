@@ -6,9 +6,8 @@ import "./index.css";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 
-export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
+export const TopNavbar = ({ render, user, setUser }) => {
   const animation = useRef(null);
-  const [screenWidth, setScreenWidth] = useState(window.screen.width);
 
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -18,6 +17,7 @@ export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
       targets: ".top-navbar",
       translateY: 100,
       ease: "spring",
+      delay: 1000,
     });
 
     const logout = () => {
@@ -37,17 +37,8 @@ export const TopNavbar = ({ render, toggleSideNavbar, user, setUser }) => {
     setUser(JSON.parse(localStorage.getItem("user")));
   }, [dispatch, history, setUser, user?.token]);
 
-  window.addEventListener("resize", () => {
-    setScreenWidth(window.screen.width);
-  });
-
   return (
     <div className="top-navbar">
-      {user && screenWidth <= 767 && (
-        <button className="hamburger" onClick={toggleSideNavbar}>
-          <HiOutlineMenuAlt4 />
-        </button>
-      )}
       <div className="branding">
         <Link to="/">
           <h1 className="title navbar-title">unpopular</h1>

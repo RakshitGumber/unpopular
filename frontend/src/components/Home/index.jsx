@@ -5,7 +5,6 @@ import CreatePost from "../CreatePost";
 import { getPosts } from "../../actions/posts";
 import "./style.css";
 import { useDispatch } from "react-redux";
-import { Search } from "../Search/index.jsx";
 
 export default function Home({ setShowCreateTab, showCreate }) {
   const [currentId, setCurrentId] = useState(null);
