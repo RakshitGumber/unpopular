@@ -1,0 +1,258 @@
+.user-details-wrapper {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+}
+
+.user-details-wrapper .main {
+  padding: 1rem 0;
+  overflow: auto;
+  max-width: 730px;
+  width: 100%;
+  height: 100%;
+}
+
+.user-details-wrapper > .main > .prof-header {
+  width: calc(100%);
+  aspect-ratio: 12/4;
+  background-color: var(--primary);
+  border-radius: 1rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+.mask {
+  width: 100%;
+  background-color: black;
+  height: 100%;
+  mask-image: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 70%,
+    rgba(0, 0, 0, 0.307)
+  );
+}
+
+.user-details-wrapper .prof-header > .bottom {
+  background-color: var(--secondary-background);
+  height: 5rem;
+  width: 100%;
+  position: relative;
+  border-radius: 0 0 1rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.prof-header > .pic > img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  position: absolute;
+  border-radius: 50%;
+  bottom: 1rem;
+  left: 2rem;
+  z-index: 2;
+  border: 5px solid var(--secondary-background);
+}
+
+.prof-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prof-header::before {
+  content: "Feature Coming Soon";
+  width: 60%;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-weight: 700;
+  top: 5rem;
+  color: white;
+}
+
+.prof-header > .pic > .status {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--primary);
+  position: absolute;
+  bottom: 2rem;
+  left: 9rem;
+  z-index: 3;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-background);
+}
+
+.prof-header > .bottom > .user-info {
+  width: 70%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom > .user-info button {
+  background: none;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  color: var(--text);
+  border-radius: 50%;
+}
+
+.bottom > .user-info button:hover {
+  background-color: var(--primary);
+}
+
+.bottom > .user-info button:active {
+  filter: brightness(0.8);
+}
+
+.user-details-wrapper .content {
+  display: flex;
+  gap: 1rem;
+}
+
+.user-details-wrapper .content .prof-about {
+  display: flex;
+  background-color: var(--secondary-background);
+  width: 40%;
+  min-width: 15rem;
+  max-width: 18rem;
+  margin-bottom: auto;
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  flex-flow: column nowrap;
+}
+
+.content > .prof-about h3 {
+  width: 100%;
+  border-bottom: 3px solid var(--background);
+  padding: 0.5rem 1rem;
+}
+
+.content > .prof-about > p {
+  padding: 1rem 1rem;
+  border-bottom: 3px solid var(--background);
+}
+
+.content > .prof-about > span {
+  padding: 1rem;
+}
+
+.user-details-wrapper .content .switch-section {
+  display: flex;
+  background-color: var(--secondary-background);
+  border-radius: 1rem;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+}
+
+.content > .switch-section > .headers {
+  display: flex;
+  justify-content: space-around;
+}
+.switch-section > .headers > a {
+  padding: 1rem 0 0.5rem 0;
+  flex-grow: 1;
+  text-align: center;
+  border-bottom: 2px solid var(--background);
+}
+
+.switch-section > .headers > a.selected {
+  border-bottom: 7px solid var(--primary);
+}
+
+.switch-section > .switch-content {
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.switch-section > .no-padding {
+  padding: 0;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767.9px) {
+  .user-details-wrapper {
+    flex-flow: column nowrap;
+  }
+  .user-details-wrapper .main {
+    padding: 0.5rem;
+  }
+  .user-details-wrapper .content {
+    flex-flow: column nowrap;
+  }
+  .user-details-wrapper .content .prof-about {
+    width: 100%;
+    max-width: none;
+  }
+  .prof-header > .pic > img {
+    width: 7rem;
+    height: 7rem;
+    left: 1rem;
+    bottom: 0.5rem;
+    border: 2px solid var(--secondary-background);
+  }
+  .prof-header > .pic > .status {
+    left: 7rem;
+    bottom: 1rem;
+    border: 1px solid var(--secondary-background);
+  }
+
+  .prof-header::before {
+    font-size: 40px;
+    font-weight: 500;
+    top: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 480.9px) {
+  .user-details-wrapper {
+    flex-flow: column nowrap;
+  }
+  .user-details-wrapper .main {
+    padding: 0.5rem;
+  }
+
+  .user-details-wrapper .content {
+    flex-flow: column nowrap;
+  }
+
+  .user-details-wrapper .prof-header > .bottom {
+    height: 4rem;
+  }
+
+  .prof-header > .pic > img {
+    width: 5rem;
+    height: 5rem;
+    left: 1rem;
+    bottom: 0.5rem;
+    border: 2px solid var(--secondary-background);
+  }
+
+  .prof-header > .pic > .status {
+    left: 5rem;
+    bottom: 1rem;
+    border: 1px solid var(--secondary-background);
+  }
+  .prof-header > .bottom > .user-info {
+    width: 70%;
+    padding: 0.5rem;
+  }
+  .user-details-wrapper .content .prof-about {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media only screen and (max-width: 520.9px) {
+  .prof-header::before {
+    font-size: 20px;
+    font-weight: 500;
+    top: 2.5rem;
+  }
+}

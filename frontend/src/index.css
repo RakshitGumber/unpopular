@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("./stylesheets/form.css");
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #7b00ff;
+  --secondary: #bf00ff;
+  --accent: #e90c59;
+}
+
+.dark-theme {
+  --background: #16161d;
+  --secondary-background: #1f1f29;
+  --secondary-text: #9696bf;
+  --text: white;
+  --border: #2d2d2d;
+}
+
+.light-theme {
+  --background: white;
+  --secondary-background: #e1e1ee;
+  --secondary-text: #31313c;
+  --text: #16161d;
+  --border: #d0d0e0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: "Cabin";
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-family: "Montserrat";
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: "Cabin";
+  letter-spacing: 0.2rem;
+  text-transform: capitalize;
+}
+
+span,
+p {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+p.weak {
+  color: var(--secondary-text);
+  font-size: 1rem;
+}
+
+a {
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  color: currentColor;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
+ul {
+  display: inline;
+}
+
+li {
+  list-style: none;
+}
+input {
+  font-family: "Cabin";
+}
+
+textarea {
+  font-family: "Cabin";
+}
+button {
+  font-family: "Cabin";
+  color: var(--text);
+  background-color: var(--secondary-background);
+  border: none;
+}
+
+button:hover {
+  filter: brightness(1.5);
+}
+
+button:active {
+  filter: brightness(0.5);
+}
+
+/* Scroll Bar design */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--primary);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

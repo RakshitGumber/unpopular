@@ -1,0 +1,119 @@
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.post-wrapper .post-main {
+  max-width: 730px;
+  flex-grow: 1;
+  padding: 1rem;
+  z-index: 3;
+  padding-top: 60px;
+}
+
+.post-wrapper .post-cont {
+  background-color: var(--secondary-background);
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  position: relative;
+}
+
+.post-wrapper .post-cont::after {
+  position: absolute;
+  width: 98%;
+  height: 1px;
+  background-color: var(--border);
+  content: "";
+  display: block;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  bottom: 10px;
+}
+
+.post-wrapper .post-cont::before {
+  position: absolute;
+  width: 100%;
+  height: 5rem;
+  background-color: var(--secondary-background);
+  content: "";
+  display: block;
+  left: 0;
+  top: -5rem;
+}
+
+.post-search-input {
+  height: 60px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  z-index: 9;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.post-search-input > input {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  border: none;
+  border-radius: 1rem;
+  color: var(--text);
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.post-search-input > button {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  transition: all 100ms ease-in;
+  aspect-ratio: 1/1;
+}
+
+.post-search-input > button:active {
+  background-color: var(--primary);
+  filter: none;
+}
+
+.post-search-input > input::placeholder {
+  color: var(--secondary-text);
+}
+
+.post-search-input > input:focus {
+  outline: none;
+}
+
+.commentSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comment {
+  width: 80%;
+  border-top: 2px solid var(--border);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.comment a {
+  color: var(--secondary-text);
+  font-size: 0.8rem;
+}
+
+.comment img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--border);
+  margin: 0px 20px 0px 0px;
+  border-radius: 50%;
+  object-fit: cover;
+}
